@@ -1,7 +1,7 @@
 import socketserver
 
 
-class MyTCPHandler(socketserver.BaseRequestHandler):
+class PCServer(socketserver.BaseRequestHandler):
     """
     The RequestHandler class for our server.
 
@@ -31,7 +31,7 @@ if __name__ == "__main__":
     HOST, PORT = '', 9999
 
     # Create the server, binding to localhost on port 9999
-    server = socketserver.TCPServer((HOST, PORT), MyTCPHandler)
+    server = socketserver.TCPServer((HOST, PORT), PCServer)
 
     print("Started: %s   Port: %d" % (HOST, PORT))
     print("Server: ", server)
