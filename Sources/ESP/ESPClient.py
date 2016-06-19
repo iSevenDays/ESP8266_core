@@ -1,18 +1,6 @@
 from Sources.ESP.network import network
 
 
-class ESPServer:
-    observers = []
-
-    def __init__(self):
-        pass
-        # connection = Socket.connection(onSocketData)
-
-    def on_socket_data(self, bytes):
-        for observer in self.observers:
-            observer.onReceivedData(bytes)
-
-
 class ESPClient:
     home_wifi_SSID = None
     home_wifi_password = None
@@ -20,9 +8,6 @@ class ESPClient:
     internal_network = network.WLAN(network.STA_IF)
 
     def __init__(self, home_wifi_ssid, home_wifi_password):
-        server = ESPServer()
-        server.observers.append(self)
-
         self.home_wifi_SSID = home_wifi_ssid
         self.home_wifi_password = home_wifi_password
 
@@ -38,9 +23,6 @@ class ESPClient:
 
     def scan(self):
         return self.internal_network.scan()
-
-    def onReceivedData(self, bytes):
-        line = bytes
 
 
 client = ESPClient("", "")
