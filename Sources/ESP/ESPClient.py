@@ -45,4 +45,4 @@ class ESPClient:
 
 client = ESPClient("", "")
 
-print(client.scan()[0])
+# print(client.scan()[0])
