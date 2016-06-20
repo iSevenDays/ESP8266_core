@@ -6,7 +6,7 @@ class Observable(object):
     def register(self, observer):
         if not observer in self.observers:
             self.observers.append(observer)
-            print("all observers: ", self.observers)
+            print(self, "added observer: ", observer)
 
     def unregister(self, observer):
         if observer in self.observers:

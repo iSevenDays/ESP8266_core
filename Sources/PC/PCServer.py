@@ -51,5 +51,5 @@ class PCServer(Observable):
         self.server.serve_forever()
 
     def on_received_connection_data(self, ip_address, data):
-        print("PCServer on_received_connection_data, data: ", data)
+        print(self, "on_received_connection_data, data: ", data)
         self.notify(data)
