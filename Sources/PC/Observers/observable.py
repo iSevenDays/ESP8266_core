@@ -1,12 +1,16 @@
+from Sources.Shared.Logger import Logger
+
+
 class Observable(object):
     def __init__(self):
         self.observers = []
-        print(self, " Observable init: ")
+        self.logger = Logger.Logger(self.__class__.__name__)
+        self.logger.debug("init ")
 
     def register(self, observer):
-        if not observer in self.observers:
+        if observer not in self.observers:
             self.observers.append(observer)
-            print(self, "added observer: ", observer)
+            self.logger.debug("added observer: %s", observer)
 
     def unregister(self, observer):
         if observer in self.observers:
@@ -17,7 +21,7 @@ class Observable(object):
             del self.observers[:]
 
     def notify(self, data):
-        print(self,  "notified ", self.observers)
+        self.logger.debug("notified %s", self.observers)
         for observer in self.observers:
             observer.on_received_data(data)
 
