@@ -1,6 +1,7 @@
 from enum import Enum
 
 from .ESPClient import ESPClient
+from .ESPServer import ESPServer
 
 
 class ESPCore:
@@ -15,4 +16,4 @@ class ESPCore:
     def __init__(self, mode: WiFiMode, home_wifi_ssid, home_wifi_password):
         self.mode = mode
         self.client = ESPClient(home_wifi_ssid, home_wifi_password)
-
+        self.server = ESPServer('ESP8266_12')
